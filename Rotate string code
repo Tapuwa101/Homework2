@@ -1,0 +1,8 @@
+Enter your code here. Read input from STDIN. Print output to STDOUT
+allRotations s = build (length s) s
+  where
+    build 0 s = []
+    build n s = let s' = rotl s in s' : build (n - 1) s'
+    rotl s = tail s ++ [head s]
+
+main = interact (unlines . map (unwords . allRotations) . tail . lines)
